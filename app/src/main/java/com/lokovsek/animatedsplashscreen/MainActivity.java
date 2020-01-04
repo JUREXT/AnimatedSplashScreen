@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.title) TextView title;
     @BindView(R.id.sub_title) TextView subTitle;
 
-    //Animations
-    private Animation topAnimantion, bottomAnimation, middleAnimation;
+    // Animations
+    private Animation topAnimantion, bottomAnimation, middleAnimation, fromLeft, fromBottom, backToTop, toRight;
     private  static int TIME_OUT_1000 = 1000;
 
     @Override
@@ -33,10 +33,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        //Animation Calls
-        topAnimantion = AnimationUtils.loadAnimation(this,R.anim.top_animation);
-        bottomAnimation = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
-        middleAnimation = AnimationUtils.loadAnimation(this,R.anim.middle_animation);
+        // Animation Calls
+        topAnimantion = AnimationUtils.loadAnimation(this, R.anim.from_top_animation);
+        bottomAnimation = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+        middleAnimation = AnimationUtils.loadAnimation(this, R.anim.middle_animation);
+        fromLeft = AnimationUtils.loadAnimation(this, R.anim.from_left_animation);
+        fromBottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom_animation);
+        backToTop = AnimationUtils.loadAnimation(this, R.anim.back_to_top_animation);
+        toRight = AnimationUtils.loadAnimation(this, R.anim.to_right_animation);
 
         //-----------Setting Animations to the elements of Splash Screen---------
         first.setAnimation(topAnimantion);
@@ -45,13 +49,11 @@ public class MainActivity extends AppCompatActivity {
         fourth.setAnimation(topAnimantion);
         fifth.setAnimation(topAnimantion);
         sixth.setAnimation(topAnimantion);
-
         title.setAnimation(middleAnimation);
-        subTitle.setAnimation(bottomAnimation);
+        subTitle.setAnimation(fromBottom);
 
-        ///
-        //Splash Screen Code to call new Activity after some time
-        new Handler().postDelayed(this::finish, TIME_OUT_1000 * 5);
+        /// Close Screen
+        new Handler().postDelayed(this::finish, TIME_OUT_1000 * 4);
 
     }
 }
