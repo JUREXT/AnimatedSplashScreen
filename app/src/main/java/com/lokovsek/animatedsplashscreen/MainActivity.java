@@ -14,18 +14,14 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.first_line) View first;
-    @BindView(R.id.second_line) View second;
-    @BindView(R.id.third_line) View third;
-    @BindView(R.id.fourth_line) View fourth;
-    @BindView(R.id.fifth_line) View fifth;
-    @BindView(R.id.sixth_line) View sixth;
-    @BindView(R.id.title) TextView title;
-    @BindView(R.id.sub_title) TextView subTitle;
-
-    // Animations
-    private Animation topAnimantion, bottomAnimation, middleAnimation, fromLeft, fromBottom, backToTop, toRight;
-    private  static int TIME_OUT_1000 = 1000;
+    @BindView(R.id.first_line) View mFirstView;
+    @BindView(R.id.second_line) View mSecondView;
+    @BindView(R.id.third_line) View mThirdView;
+    @BindView(R.id.fourth_line) View mFourthView;
+    @BindView(R.id.fifth_line) View mFifthView;
+    @BindView(R.id.sixth_line) View mSixthView;
+    @BindView(R.id.title) TextView mTitle;
+    @BindView(R.id.sub_title) TextView mSubTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +30,27 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         // Animation Calls
-        topAnimantion = AnimationUtils.loadAnimation(this, R.anim.from_top_animation);
-        bottomAnimation = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
-        middleAnimation = AnimationUtils.loadAnimation(this, R.anim.middle_animation);
-        fromLeft = AnimationUtils.loadAnimation(this, R.anim.from_left_animation);
-        fromBottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom_animation);
-        backToTop = AnimationUtils.loadAnimation(this, R.anim.back_to_top_animation);
-        toRight = AnimationUtils.loadAnimation(this, R.anim.to_right_animation);
+        Animation mFromTopAnimantion = AnimationUtils.loadAnimation(this, R.anim.from_top_animation);
+        Animation mBottomAnimation = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+        Animation mMiddleFromLeftAnimation = AnimationUtils.loadAnimation(this, R.anim.middle_animation);
+        Animation mFromLeftAnimation = AnimationUtils.loadAnimation(this, R.anim.from_left_animation);
+        Animation mFromBottomAnimation = AnimationUtils.loadAnimation(this, R.anim.from_bottom_animation);
+        Animation mBackToTopAnimation = AnimationUtils.loadAnimation(this, R.anim.back_to_top_animation);
+        Animation mToRightAnimation = AnimationUtils.loadAnimation(this, R.anim.to_right_animation);
 
-        //-----------Setting Animations to the elements of Splash Screen---------
-        first.setAnimation(topAnimantion);
-        second.setAnimation(topAnimantion);
-        third.setAnimation(topAnimantion);
-        fourth.setAnimation(topAnimantion);
-        fifth.setAnimation(topAnimantion);
-        sixth.setAnimation(topAnimantion);
-        title.setAnimation(middleAnimation);
-        subTitle.setAnimation(fromBottom);
+        // Setting Animations to the elements of Splash Screen
+        mFirstView.setAnimation(mFromTopAnimantion);
+        mSecondView.setAnimation(mFromTopAnimantion);
+        mThirdView.setAnimation(mFromTopAnimantion);
+        mFourthView.setAnimation(mFromTopAnimantion);
+        mFifthView.setAnimation(mFromTopAnimantion);
+        mSixthView.setAnimation(mFromTopAnimantion);
+
+        mTitle.setAnimation(mMiddleFromLeftAnimation);
+        mSubTitle.setAnimation(mFromBottomAnimation);
 
         /// Close Screen
-        new Handler().postDelayed(this::finish, TIME_OUT_1000 * 4);
+        new Handler().postDelayed(this::finish, 1000 * 4);
 
     }
 }
